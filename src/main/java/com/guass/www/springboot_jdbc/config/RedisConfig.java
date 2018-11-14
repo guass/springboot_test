@@ -4,6 +4,7 @@ import com.guass.www.springboot_jdbc.bean.Employee;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -26,6 +27,7 @@ public class RedisConfig {
 //        return template;
 //    }
 
+    @Primary
     @Bean
     public RedisCacheManager empCacheManger(RedisConnectionFactory connectionFactory){
 
