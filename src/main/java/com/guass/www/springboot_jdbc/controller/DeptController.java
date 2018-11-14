@@ -2,8 +2,11 @@ package com.guass.www.springboot_jdbc.controller;
 
 
 
+import com.guass.www.springboot_jdbc.bean.Department;
 import com.guass.www.springboot_jdbc.bean.Employee;
 
+import com.guass.www.springboot_jdbc.mapper.DepartmentMapper;
+import com.guass.www.springboot_jdbc.service.DepartmentService;
 import com.guass.www.springboot_jdbc.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +19,19 @@ public class DeptController {
 
 
     @Autowired
-    EmployeeService mEmployeeService;
+    DepartmentService mDepartmentService;
 
-//
-//    @GetMapping("/dept/{id}")
-//    public Department getDepartment(@PathVariable("id") Integer id){
-//        return departmentMapper.getDeptById(id);
-//    }
-//
-//    @GetMapping("/dept")
-//    public Department insertDept(Department department){
-//      //  departmentMapper.insertDept(department);
-//        return department;
-//    }
+
+    @GetMapping("/dept/{id}")
+    public Department getDepartment(@PathVariable("id") Integer id){
+        return mDepartmentService.getDepartment(id);
+    }
+
+    @GetMapping("/dept")
+    public Department insertDept(Department department){
+        mDepartmentService.insertDept(department);
+        return department;
+    }
 
 
 }
