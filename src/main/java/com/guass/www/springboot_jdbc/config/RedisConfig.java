@@ -39,7 +39,6 @@ public class RedisConfig {
                 .transactionAware()
                 .build();
 
-//        log.debug("自定义RedisCacheManager加载完成");
         return redisCacheManager;
 
 
