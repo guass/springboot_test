@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guass.www.springboot_jdbc.mapper.EmployeeMapper">
+
+    <insert id="insertEmp">
+        insert into employee(lastName,email,gender,d_id) values (#{lastName},#{email},#{gender},#{dId})
+    </insert>
+
+    <update id="updateEmp">
+        update employee set lastName= #{lastName} ,
+            email = #{email}, d_id = #{dId} , gender = #{gender} where id = #{id}
+    </update>
+
+    <delete id="deleteEmp">
+        delete from employee where id = #{id}
+    </delete>
+
+    <select id="getEmpById" resultType="com.guass.www.springboot_jdbc.bean.Employee">
+        select * from employee where id=#{id}
+    </select>
+    <select id="getEmpByName" resultType="com.guass.www.springboot_jdbc.bean.Employee">
+        select * from employee where lastName = #{name}
+    </select>
+</mapper>

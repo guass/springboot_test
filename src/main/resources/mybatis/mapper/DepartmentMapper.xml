@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guass.www.springboot_jdbc.mapper.DepartmentMapper">
+
+    <insert id="insertDept">
+        insert into department(departmentName) values(#{departmentName})
+    </insert>
+    <update id="updateDept">
+        update department set departmentName=#{departmentName} where id=#{id}
+    </update>
+
+    <delete id="deleteDept">
+        delete from department where id=#{id}
+    </delete>
+
+    <select id="getDeptById" resultType="com.guass.www.springboot_jdbc.bean.Department">
+      select * from department where  id = #{id}
+    </select>
+</mapper>
