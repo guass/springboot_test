@@ -15,16 +15,16 @@ import java.net.UnknownHostException;
 @Configuration
 public class RedisConfig {
 
-    @Bean
-    public RedisTemplate<Object, Employee> redisTemplate(
-            RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
-        RedisTemplate<Object, Employee> template = new RedisTemplate<>();
-        template.setConnectionFactory(redisConnectionFactory);
-
-        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Employee>(Employee.class);
-        template.setDefaultSerializer(jackson2JsonRedisSerializer);
-        return template;
-    }
+//    @Bean
+//    public RedisTemplate<Object, Employee> redisTemplate(
+//            RedisConnectionFactory redisConnectionFactory) throws UnknownHostException {
+//        RedisTemplate<Object, Employee> template = new RedisTemplate<>();
+//        template.setConnectionFactory(redisConnectionFactory);
+//
+//        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Employee>(Employee.class);
+//        template.setDefaultSerializer(jackson2JsonRedisSerializer);
+//        return template;
+//    }
 
     @Bean
     public RedisCacheManager empCacheManger(RedisConnectionFactory connectionFactory){

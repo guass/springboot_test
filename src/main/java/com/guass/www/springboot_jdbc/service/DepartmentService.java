@@ -14,7 +14,7 @@ public class DepartmentService {
 
 
 
-    @Cacheable(cacheNames = "dept")
+    @Cacheable(cacheNames = "dept",key = "#id")
     public Department getDepartment(Integer id){
         return mDepartmentMapper.getDeptById(id);
     }
