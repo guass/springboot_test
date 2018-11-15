@@ -1,10 +1,11 @@
 package com.guass.www.springboot_jdbc;
 
+import com.guass.www.springboot_jdbc.bean.Book;
 import com.guass.www.springboot_jdbc.bean.Employee;
 import com.guass.www.springboot_jdbc.mapper.EmployeeMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -38,6 +39,18 @@ public class SpringbootJdbcApplicationTests {
     @Autowired
     RabbitTemplate mRabbitTemplate;
 
+
+    @Autowired
+    AmqpAdmin mAmqpAdmin;
+
+    @Test
+    public void creatEx(){
+//        mAmqpAdmin.declareExchange(new DirectExchange("amqpadmin.exchange"));
+//        mAmqpAdmin.declareQueue(new Queue("amqpadmin.queue",true));
+
+        mAmqpAdmin.declareBinding(new Binding("amqpadmin.queue",Binding.DestinationType.QUEUE,"amqpadmin.exchange","amqp.guass",null));
+    }
+
 //    @Autowired
 //    RedisTemplate<Object, Employee> mObjectEmployeeRedisTemplate;
 
@@ -54,10 +67,11 @@ public class SpringbootJdbcApplicationTests {
 
  //       mObjectEmployeeRedisTemplate.opsForValue().set("emp01",mEmployeeMapper.getEmpById(2));
 
-        Map<String,Object> map = new HashMap();
-        map.put("msg","msg1");
-        map.put("data",Arrays.asList("1,haha","ok",true));
-        mRabbitTemplate.convertAndSend("guas.exchange","guass.news",map);
+        Book book = new Book();
+        book.setAuth("guass");
+        book.setName("android");
+        book.setPrice(19.5f);
+        mRabbitTemplate.convertAndSend("guass.fanout",book);
 
     }
 
