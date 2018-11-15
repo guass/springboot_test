@@ -1,18 +1,21 @@
 package com.guass.www.springboot_jdbc.bean;
 
+import org.springframework.data.elasticsearch.annotations.Document;
+
+@Document(indexName = "book_index",type = "books")
 public class Book {
 
+    private Integer id;
     private String name;
     private String auth;
     private Float price;
 
-    public Book() {
+    public Integer getId() {
+        return id;
     }
 
-    public Book(String name, String auth, Float price) {
-        this.name = name;
-        this.auth = auth;
-        this.price = price;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,5 +40,14 @@ public class Book {
 
     public void setPrice(Float price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", auth='" + auth + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

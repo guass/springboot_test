@@ -4,6 +4,7 @@ import com.guass.www.springboot_jdbc.bean.Article;
 import com.guass.www.springboot_jdbc.bean.Book;
 import com.guass.www.springboot_jdbc.bean.Employee;
 import com.guass.www.springboot_jdbc.mapper.EmployeeMapper;
+import com.guass.www.springboot_jdbc.repository.BookRepository;
 import io.searchbox.client.JestClient;
 import io.searchbox.core.Index;
 import io.searchbox.core.Search;
@@ -51,6 +52,9 @@ public class SpringbootJdbcApplicationTests {
 
     @Autowired
     JestClient mJestClient;
+
+    @Autowired
+    BookRepository mBookRepository;
 
     @Test
     public void creatEx(){
