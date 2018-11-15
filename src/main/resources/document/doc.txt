@@ -6,7 +6,7 @@ sudo docker pull registry.docker-cn.com/library/elasticsearch
 
 sudo docker run -e ES_JAVA_OPTS="-Xms256m -Xmx256m" -d -p 9200:9200 -p 9300:9300 --name myES01 5acf0e8da90b
 
-
+https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html
 
 sudo docker run -d -p 5672:5672 -p 15672:15672  --name myrabbitmq d69a5113ceae
 

@@ -1,8 +1,13 @@
 package com.guass.www.springboot_jdbc;
 
+import com.guass.www.springboot_jdbc.bean.Article;
 import com.guass.www.springboot_jdbc.bean.Book;
 import com.guass.www.springboot_jdbc.bean.Employee;
 import com.guass.www.springboot_jdbc.mapper.EmployeeMapper;
+import io.searchbox.client.JestClient;
+import io.searchbox.core.Index;
+import io.searchbox.core.Search;
+import io.searchbox.core.SearchResult;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.*;
@@ -14,6 +19,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +49,9 @@ public class SpringbootJdbcApplicationTests {
     @Autowired
     AmqpAdmin mAmqpAdmin;
 
+    @Autowired
+    JestClient mJestClient;
+
     @Test
     public void creatEx(){
 //        mAmqpAdmin.declareExchange(new DirectExchange("amqpadmin.exchange"));
@@ -67,12 +76,55 @@ public class SpringbootJdbcApplicationTests {
 
  //       mObjectEmployeeRedisTemplate.opsForValue().set("emp01",mEmployeeMapper.getEmpById(2));
 
-        Book book = new Book();
-        book.setAuth("guass");
-        book.setName("android");
-        book.setPrice(19.5f);
-        mRabbitTemplate.convertAndSend("guass.fanout",book);
+//        Book book = new Book();
+//        book.setAuth("guass");
+//        book.setName("android");
+//        book.setPrice(19.5f);
+//        mRabbitTemplate.convertAndSend("guass.fanout",book);
 
+
+
+    }
+
+
+    @Test
+    public void esAdd(){
+        Article article = new Article();
+
+        article.setId(1);
+        article.setTitle("title");
+        article.setAuthor("guass");
+        article.setContent("content content ~~~~~~~~~~~~~~~~");
+
+        Index index = new Index.Builder(article).index("guass_index").type("news").build();
+
+        try {
+            mJestClient.execute(index);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void esSearch(){
+        String json = "{\n" +
+                "    \"query\" : {\n" +
+                "        \"match\" : {\n" +
+                "            \"content\" : \"content\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "}";
+        Search build = new Search.Builder(json).addIndex("guass_index").addType("news").build();
+
+        try {
+            SearchResult execute = mJestClient.execute(build);
+          //  execute.getJsonString();
+
+            System.out.println(" execute " +execute.getJsonString() );
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
