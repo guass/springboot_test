@@ -84,6 +84,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
         <dependency>
             <groupId>io.lettuce</groupId>
             <artifactId>lettuce-core</artifactId>
@@ -98,20 +99,20 @@
             <artifactId>spring-rabbit</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-elasticsearch</artifactId>-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.slf4j</groupId>-->
-                    <!--<artifactId>jcl-over-slf4j</artifactId>-->
-                <!--</exclusion>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.apache.logging.log4j</groupId>-->
-                    <!--<artifactId>log4j-core</artifactId>-->
-                <!--</exclusion>-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-elasticsearch</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.searchbox/jest -->
         <dependency>

@@ -1,7 +1,7 @@
 spring:
   datasource:
     username: root
-    password: 123456
+    password: root
 #    url: jdbc:mysql://192.9.51.175:3306/spring_cache
     url: jdbc:mysql://localhost:3306/springboot
     driver-class-name: com.mysql.jdbc.Driver
@@ -45,12 +45,25 @@ spring:
      # 模板文件存放位置  , 默认 classpath:/templates/
      prefix: classpath:/templates/
   redis:
-    host: 192.168.80.128
+    host: 192.168.1.106
+  rabbitmq:
+    host: 192.168.1.106
+
+  elasticsearch:
+    jest:
+      uris: http://192.168.1.106:9200/
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.1.106:9300
+
 
 
 mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
+
+
 
 
 
