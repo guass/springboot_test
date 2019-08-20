@@ -15,6 +15,16 @@ public class ST2 extends AiBase {
 
     @Override
     public String f3() {
+        String ss = "aaa";
+        String ss2 = ss;
+
+        System.out.println("ss " + ss);
+        System.out.println("ss2 " + ss2);
+
+        ss = "111";
+
+        System.out.println("ss " + ss);
+        System.out.println("ss2 " + ss2);
         return null;
     }
 }

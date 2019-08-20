@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DepartmentService {
 
-    @Autowired
+    @Autowired(required = false)
     DepartmentMapper mDepartmentMapper;
 
     @Autowired
@@ -31,7 +31,6 @@ public class DepartmentService {
 
 
     public Department getDepartment2(Integer id){
-
 
         Department department = null;
 

@@ -1,3 +1,5 @@
+
+
 spring:
   datasource:
     username: root
@@ -45,7 +47,7 @@ spring:
      # 模板文件存放位置  , 默认 classpath:/templates/
      prefix: classpath:/templates/
   redis:
-    host: 192.168.1.106
+    host: 192.168.23.153
   rabbitmq:
     host: 192.168.1.106
 
@@ -56,6 +58,8 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 192.168.1.106:9300
+  application:
+    name: guass
 
 
 
@@ -70,4 +74,5 @@ mybatis:
 
 
 
-
+server:
+  port: 8080
