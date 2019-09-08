@@ -28,6 +28,7 @@ public class Server3Handler extends Middleware {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
             throws Exception {
+        ctx.close();
         System.err.println( name +"  exception" + cause.toString());
     }
 

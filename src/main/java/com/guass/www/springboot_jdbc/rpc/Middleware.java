@@ -88,7 +88,7 @@ public abstract class Middleware extends ChannelInboundHandlerAdapter {
     }
 
     protected void handlerAllIdle(ChannelHandlerContext ctx) {
-        System.err.println("---ALL_IDLE---");
+        System.err.println("---ALL_IDLE---" + ctx.channel().id().asLongText());
     }
 
     protected void handlerWriterIdle(ChannelHandlerContext ctx) {
@@ -103,12 +103,12 @@ public abstract class Middleware extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // TODO Auto-generated method stub
-        System.err.println(" ---"+ctx.channel().remoteAddress() +"----- is  action" );
+        System.err.println(" ---"+ctx.channel().remoteAddress() +"----- is  action " + ctx.channel().id().asLongText() );
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         // TODO Auto-generated method stub
-        System.err.println(" ---"+ctx.channel().remoteAddress() +"----- is  inAction");
+        System.err.println(" ---"+ctx.channel().remoteAddress() +"----- is  inAction " + ctx.channel().id().asLongText());
     }
 }
