@@ -101,6 +101,11 @@ public abstract class Middleware extends ChannelInboundHandlerAdapter {
     }
 
     @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("--- ctx add : " + ctx.channel().id().asLongText());
+    }
+
+    @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         // TODO Auto-generated method stub
         System.err.println(" ---"+ctx.channel().remoteAddress() +"----- is  action " + ctx.channel().id().asLongText() );
